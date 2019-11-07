@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Multiplication</string>
+    <string name="mode_2">Mode 2</string>
+    <string name="mode_1">Mode 1</string>
+    <string name="v_lkommen_till_multiplikationstr_naren">Välkommen till multiplikationstränaren</string>
 </resources>
