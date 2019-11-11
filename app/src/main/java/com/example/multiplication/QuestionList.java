@@ -4,18 +4,19 @@ import java.util.Random;
 
 public class QuestionList {
     private Question[] list;
+    private Random rand;
 
-    public QuestionList(int mode){
-        generateListWithQuestions(mode);
+    public QuestionList(Random rand, int mode, int nbr){
+        this.rand = rand;
+        generateListWithQuestions(mode, rand, nbr);
     }
 
-    private void generateListWithQuestions(int mode){
+    private void generateListWithQuestions(int mode, Random rand, int nbr){
         switch(mode){
             case 1:
                 list = new Question[20];
-                Random rand = new Random();
                 for(int i = 0; i < 20; i++){
-                    list[i] = new Question(rand);
+                    list[i] = new Question(rand, mode, nbr);
                 }
                 break;
         }
@@ -37,5 +38,12 @@ public class QuestionList {
 
     public Question[] getQuestionList(){
         return list;
+    }
+
+    public Question getQuestion(int pos){
+        if(pos >= 21 || pos < 0){
+            return null;
+        }
+        return list[pos];
     }
 }
