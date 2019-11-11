@@ -3,4 +3,7 @@
     <string name="mode_2">Mode 2</string>
     <string name="mode_1">Mode 1</string>
     <string name="v_lkommen_till_multiplikationstr_naren">Välkommen till multiplikationstränaren</string>
+    <string name="question_is_put_here">question is put here</string>
+    <string name="answer">Answer</string>
+    <string name="textview">TextView</string>
 </resources>

@@ -15,10 +15,10 @@ public class Game {
         Question[] list = questionList.getQuestionList();
         int questionNbr = 1;
         String question;
-        TextView questionText = (TextView) findViewById(QUESTIONTEXT);
+      //  TextView questionText = (TextView) findViewById(R.id.questionText);
         while(questionNbr < 21){
             question = questionList.getQuestion(questionNbr).getQuestion();
-            questionText.setText(question);
+     //       questionText.setText(question);
             // Wait for answer
             questionNbr++;
         }
