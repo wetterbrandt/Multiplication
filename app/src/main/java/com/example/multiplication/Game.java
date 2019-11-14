@@ -7,20 +7,52 @@ import java.util.Random;
 public class Game {
     private QuestionList questionList;
     private Random rand;
+    private int[] answerList;
+    private int questionNbr = 0;
 
     public Game(int mode, int specificNbr){
-        // Creates the game layout.
         rand = new Random();
         questionList = new QuestionList(rand, mode, specificNbr);
-        Question[] list = questionList.getQuestionList();
-        int questionNbr = 1;
-        String question;
-      //  TextView questionText = (TextView) findViewById(R.id.questionText);
-        while(questionNbr < 21){
-            question = questionList.getQuestion(questionNbr).getQuestion();
-     //       questionText.setText(question);
-            // Wait for answer
-            questionNbr++;
-        }
     }
+
+    /*
+    Returns an array of answers to the questions.
+     */
+    public int[] getAnswerList(){
+        return answerList;
+    }
+
+    /*
+    Sets the answer to a specific question and saves it to an array.
+     */
+    public void setAnswer(int pos, int answer){
+        answerList[pos] = answer;
+    }
+
+    /*
+    Returns a new question if there are new questions.
+     */
+    public String nextQuestion(){
+        if(questionNbr < 20){
+            return questionList.getQuestion(questionNbr++).getQuestion();
+        }
+        return "";
+    }
+
+    public boolean[] resultList(){
+        boolean[] resultList = new boolean[20];
+        for(int i = 0; i < 20; i++){
+            if(questionList.getQuestion(i).correctAnswer(answerList[i])){
+                resultList[i] = true;
+            }else{
+                resultList[i] = false;
+            }
+        }
+        return resultList;
+    }
+
+
+
+
+
 }

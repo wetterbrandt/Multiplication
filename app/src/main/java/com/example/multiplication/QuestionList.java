@@ -4,25 +4,19 @@ import java.util.Random;
 
 public class QuestionList {
     private Question[] list;
-    private Random rand;
 
     public QuestionList(Random rand, int mode, int nbr){
-        this.rand = rand;
-        generateListWithQuestions(mode, rand, nbr);
+        generateListWithQuestions(rand, mode, nbr);
     }
 
-    private void generateListWithQuestions(int mode, Random rand, int nbr){
-        switch(mode){
-            case 1:
-                list = new Question[20];
-                for(int i = 0; i < 20; i++){
-                    list[i] = new Question(rand, mode, nbr);
-                }
-                break;
+    private void generateListWithQuestions(Random rand, int mode, int nbr){
+        list = new Question[20];
+        for(int i = 0; i < 20; i++){
+            list[i] = new Question(rand, mode, nbr);
         }
     }
 
-    public boolean[] checkAnswersBetweenLists(int[] answerList){
+    /*public boolean[] checkAnswersBetweenLists(int[] answerList){
         boolean[] answers = new boolean[20];
         int i = 0;
         for (Question q: list) {
@@ -35,7 +29,7 @@ public class QuestionList {
         }
         return answers;
     }
-
+*/
     public Question[] getQuestionList(){
         return list;
     }

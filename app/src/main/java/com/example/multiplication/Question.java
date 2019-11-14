@@ -32,12 +32,7 @@ public class Question {
     }
 
     public String getQuestion(){
-        int randomness = rand.nextInt(2); // Kan vara onödig. Ändrar ordning vid bakåtsteg.
-        if(randomness == 0) {
             return nbr1 + " * " + nbr2 + " = ?";
-        }else {
-            return nbr2 + " * " + nbr1 + " = ?";
-        }
     }
 
     public boolean correctAnswer(int answer){
