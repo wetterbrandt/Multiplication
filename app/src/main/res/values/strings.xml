@@ -6,4 +6,5 @@
     <string name="question_is_put_here">question is put here</string>
     <string name="answer">Answer</string>
     <string name="textview">TextView</string>
+    <string name="specify_number">Specify number</string>
 </resources>
