@@ -13,6 +13,7 @@ public class Game {
     public Game(int mode, int specificNbr){
         rand = new Random();
         questionList = new QuestionList(rand, mode, specificNbr);
+        answerList = new int[20];
     }
 
     /*
@@ -49,6 +50,10 @@ public class Game {
             }
         }
         return resultList;
+    }
+
+    public int getCurrentQuestionPosition(){
+        return questionNbr;
     }
 
 
