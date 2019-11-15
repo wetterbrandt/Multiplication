@@ -7,4 +7,6 @@
     <string name="answer">Answer</string>
     <string name="textview">TextView</string>
     <string name="specify_number">Specify number</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 </resources>

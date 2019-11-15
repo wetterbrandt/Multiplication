@@ -7,7 +7,7 @@ import java.util.Random;
 public class Game {
     private QuestionList questionList;
     private Random rand;
-    private int[] answerList;
+    private static int[] answerList;
     private int questionNbr = 0;
 
     public Game(int mode, int specificNbr){
@@ -19,7 +19,7 @@ public class Game {
     /*
     Returns an array of answers to the questions.
      */
-    public int[] getAnswerList(){
+    public static int[] getAnswerList(){
         return answerList;
     }
 

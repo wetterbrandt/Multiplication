@@ -2,9 +2,11 @@ package com.example.multiplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnKeyListener;
@@ -14,6 +16,8 @@ public class Game2Activity extends AppCompatActivity {
     TextView questionText;
     Game game;
     EditText answerTextEdit;
+    Button previousBtn;
+    Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +25,12 @@ public class Game2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_game1);
         questionText = (TextView) findViewById(R.id.questionText);
         answerTextEdit = (EditText) findViewById(R.id.answerTextEdit);
+        previousBtn = (Button) findViewById(R.id.preBtn);
+        nextBtn = (Button) findViewById(R.id.nextBtn);
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
                 // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -59,7 +66,11 @@ public class Game2Activity extends AppCompatActivity {
             questionText.setText("Välj multiplikationstabell");
             answerTextEdit.setHint("Specify number");
         }
-        // Lägg in en if om fråga 20.
+
+       /* if(game.getCurrentQuestionPosition() == 19){
+            Intent intent = new Intent(this, ResultActivity.class);
+            startActivity(intent);
+        } */
     }
 
     @Override
