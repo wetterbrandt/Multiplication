@@ -27,6 +27,7 @@ public class Game2Activity extends AppCompatActivity {
         answerTextEdit = (EditText) findViewById(R.id.answerTextEdit);
         previousBtn = (Button) findViewById(R.id.preBtn);
         nextBtn = (Button) findViewById(R.id.nextBtn);
+        //previousBtn.setVisibility(View.VISIBLE);
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -60,6 +61,7 @@ public class Game2Activity extends AppCompatActivity {
         super.onResume();
         if(game != null){
             answerTextEdit.setHint("Answer");
+            previousBtn.setHint("Previous");
             answerTextEdit.getText().clear();
             questionText.setText(game.nextQuestion());
         }else{

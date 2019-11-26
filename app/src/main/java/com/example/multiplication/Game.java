@@ -9,11 +9,12 @@ public class Game {
     private Random rand;
     private static int[] answerList;
     private int questionNbr = 0;
+    private final int nbrOfQuestions = 5;
 
     public Game(int mode, int specificNbr){
         rand = new Random();
-        questionList = new QuestionList(rand, mode, specificNbr);
-        answerList = new int[20];
+        questionList = new QuestionList(rand, mode, specificNbr, nbrOfQuestions);
+        answerList = new int[nbrOfQuestions];
     }
 
     /*
@@ -34,15 +35,15 @@ public class Game {
     Returns a new question if there are new questions.
      */
     public String nextQuestion(){
-        if(questionNbr < 20){
+        if(questionNbr < nbrOfQuestions){
             return questionList.getQuestion(questionNbr++).getQuestion();
         }
         return "";
     }
 
     public boolean[] resultList(){
-        boolean[] resultList = new boolean[20];
-        for(int i = 0; i < 20; i++){
+        boolean[] resultList = new boolean[nbrOfQuestions];
+        for(int i = 0; i < nbrOfQuestions; i++){
             if(questionList.getQuestion(i).correctAnswer(answerList[i])){
                 resultList[i] = true;
             }else{
@@ -54,6 +55,10 @@ public class Game {
 
     public int getCurrentQuestionPosition(){
         return questionNbr;
+    }
+
+    public int getNbrOfQuestions(){
+        return nbrOfQuestions;
     }
 
 

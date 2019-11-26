@@ -2,15 +2,19 @@ package com.example.multiplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnKeyListener;
 
+import java.io.Serializable;
 
-public class Game1Activity extends AppCompatActivity {
+
+public class Game1Activity extends AppCompatActivity implements Serializable{
     TextView questionText;
     Game game;
     EditText answerTextEdit;
@@ -29,8 +33,14 @@ public class Game1Activity extends AppCompatActivity {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
-                    game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
-                    onResume();
+                    if(answerTextEdit.getText().toString() != "") {
+                        game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
+                        if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
+                            openActivity1();
+                        }else{
+                            onResume();
+                        }
+                    }
                     return true;
                 }
                 return false;
@@ -58,6 +68,21 @@ public class Game1Activity extends AppCompatActivity {
         super.onPause();
 
     }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        openActivity1();
+    }
+
+
+
+    private void openActivity1(){
+        Intent intent = new Intent(Game1Activity.this, ResultActivity.class);
+        startActivity(intent);
+    }
+
+
 
 
 
