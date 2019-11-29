@@ -41,6 +41,12 @@ public class Question {
         }
         return false;
     }
+
+    public String getQuestionsAndAnswer(){
+        int product = nbr1 * nbr2;
+        return (nbr1 + " * " + nbr2 + " = " + product);
+    }
+
 }
 
 

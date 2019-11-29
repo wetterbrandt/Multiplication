@@ -1,15 +1,14 @@
 package com.example.multiplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.View.OnKeyListener;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 
@@ -79,8 +78,10 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
 
     private void openActivity1(){
         Intent intent = new Intent(Game1Activity.this, ResultActivity.class);
+        intent.putExtra("gameObj", game.resultList());  // Ny
         startActivity(intent);
     }
+
 
 
 

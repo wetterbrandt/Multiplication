@@ -13,7 +13,7 @@ public class ResultActivity extends AppCompatActivity {
     ListView resultView;
     Button newGame;
 
-    String[] results = {"Varför funkar det inte" , "2", "3", "4" , "5"};
+ //   String[] results = {"Varför funkar det inte" , "2", "3", "4" , "5"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,8 @@ public class ResultActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_result);
 
+        Intent intent = getIntent();
+        String[] results = (String[]) intent.getSerializableExtra("gameObj");
 
 
         CustomListAdapter adapter = new CustomListAdapter(this, results);

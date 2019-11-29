@@ -1,7 +1,5 @@
 package com.example.multiplication;
 
-import android.widget.TextView;
-
 import java.util.Random;
 
 public class Game {
@@ -41,16 +39,24 @@ public class Game {
         return "";
     }
 
-    public boolean[] resultList(){
-        boolean[] resultList = new boolean[nbrOfQuestions];
+
+    public String[] resultList(){
+        String[] resultList = new String[nbrOfQuestions + 1];
+        for(int i = 0; i < nbrOfQuestions - 1; i++){
+            resultList[i] = questionList.getQuestion(i).getQuestionsAndAnswer() + " : " + answerList[i];
+        }
+        resultList[nbrOfQuestions] =  Integer.toString(getNbrOfCorrectlyAnsweredQuestions());
+        return resultList;
+    }
+
+    private int getNbrOfCorrectlyAnsweredQuestions(){
+        int correct = 0;
         for(int i = 0; i < nbrOfQuestions; i++){
             if(questionList.getQuestion(i).correctAnswer(answerList[i])){
-                resultList[i] = true;
-            }else{
-                resultList[i] = false;
+                correct++;
             }
         }
-        return resultList;
+        return correct;
     }
 
     public int getCurrentQuestionPosition(){
