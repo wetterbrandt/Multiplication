@@ -1,29 +1,35 @@
 package com.example.multiplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import java.util.Collections;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class ResultActivity extends AppCompatActivity {
-    ListView resultList;
+    ListView resultView;
     Button newGame;
+
+    String[] results = {"Varför funkar det inte" , "2", "3", "4" , "5"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] results = {"Varför funkar det inte" , "2", "3", "4" , "5"};
+
         setContentView(R.layout.activity_result);
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_result, results);
-        resultList = (ListView) findViewById(R.id.resultList);
-        resultList.setAdapter(adapter);
+
+
+
+        CustomListAdapter adapter = new CustomListAdapter(this, results);
+        resultView = findViewById(R.id.resultView);
+
+     //   ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_result, R.id.resultView, results);
+
+        resultView.setAdapter(adapter);
+
         newGame = (Button) findViewById(R.id.newGameButton);
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
