@@ -42,10 +42,10 @@ public class Game {
 
     public String[] resultList(){
         String[] resultList = new String[nbrOfQuestions + 1];
-        for(int i = 0; i < nbrOfQuestions - 1; i++){
-            resultList[i] = questionList.getQuestion(i).getQuestionsAndAnswer() + " : " + answerList[i];
+        for(int i = 0; i < nbrOfQuestions; i++){
+            resultList[i] = "  " + questionList.getQuestion(i).getQuestionsAndAnswer() + " : " + answerList[i];
         }
-        resultList[nbrOfQuestions] =  Integer.toString(getNbrOfCorrectlyAnsweredQuestions());
+        resultList[nbrOfQuestions] =  "  " + getNbrOfCorrectlyAnsweredQuestions();
         return resultList;
     }
 
@@ -67,7 +67,20 @@ public class Game {
         return nbrOfQuestions;
     }
 
-
+    public String[] getEverythingList() {
+        String temp[] = new String[(nbrOfQuestions * 3) + 1];
+        for(int i = 0; i < nbrOfQuestions * 3; i++){
+            if(i < nbrOfQuestions) {
+                temp[i] = "  " + answerList[i];
+            }else if (i < nbrOfQuestions * 2 && i >= nbrOfQuestions){
+                temp[i] = "  " + questionList.getQuestion(i - nbrOfQuestions).getQuestionsAndAnswer() + " : " + answerList[i - nbrOfQuestions];
+            }else {
+                temp[i] = "  " + questionList.getQuestion(i - (2 * nbrOfQuestions)).getCorrectAnswer();
+            }
+            temp[nbrOfQuestions * 3] =  "  " + getNbrOfCorrectlyAnsweredQuestions() + "/" + nbrOfQuestions + " correct";
+        }
+        return temp;
+    }
 
 
 

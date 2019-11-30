@@ -78,7 +78,7 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
 
     private void openActivity1(){
         Intent intent = new Intent(Game1Activity.this, ResultActivity.class);
-        intent.putExtra("gameObj", game.resultList());  // Ny
+        intent.putExtra("gameObj", game.getEverythingList());  // Ny
         startActivity(intent);
     }
 

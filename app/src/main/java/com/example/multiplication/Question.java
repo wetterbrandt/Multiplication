@@ -35,6 +35,11 @@ public class Question {
             return nbr1 + " * " + nbr2 + " = ?";
     }
 
+    /*
+    Returns a boolean value.
+    True if answer is correct answer
+    Otherwise false.
+     */
     public boolean correctAnswer(int answer){
         if(answer == correctAnswer){
             return true;
@@ -42,6 +47,16 @@ public class Question {
         return false;
     }
 
+    /*
+    Returns the correct answer to the question.
+     */
+    public int getCorrectAnswer(){
+        return correctAnswer;
+    }
+
+    /*
+    Returns a String
+     */
     public String getQuestionsAndAnswer(){
         int product = nbr1 * nbr2;
         return (nbr1 + " * " + nbr2 + " = " + product);
