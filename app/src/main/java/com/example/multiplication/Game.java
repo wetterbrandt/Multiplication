@@ -4,13 +4,12 @@ import java.util.Random;
 
 public class Game {
     private QuestionList questionList;
-    private Random rand;
     private static int[] answerList;
     private int questionNbr = 0;
-    private final int nbrOfQuestions = 5;
+    private final int nbrOfQuestions = 20;
 
-    public Game(int mode, int specificNbr){
-        rand = new Random();
+    Game(int mode, int specificNbr){
+        Random rand = new Random();
         questionList = new QuestionList(rand, mode, specificNbr, nbrOfQuestions);
         answerList = new int[nbrOfQuestions];
     }
@@ -25,7 +24,7 @@ public class Game {
     /*
     Sets the answer to a specific question and saves it to an array.
      */
-    public void setAnswer(int pos, int answer){
+    void setAnswer(int pos, int answer){
         answerList[pos] = answer;
     }
 
@@ -59,20 +58,20 @@ public class Game {
         return correct;
     }
 
-    public int getCurrentQuestionPosition(){
+    int getCurrentQuestionPosition(){
         return questionNbr;
     }
 
-    public int getNbrOfQuestions(){
+    int getNbrOfQuestions(){
         return nbrOfQuestions;
     }
 
-    public String[] getEverythingList() {
-        String temp[] = new String[(nbrOfQuestions * 3) + 1];
+    String[] getEverythingList() {
+        String[] temp = new String[(nbrOfQuestions * 3) + 1];
         for(int i = 0; i < nbrOfQuestions * 3; i++){
             if(i < nbrOfQuestions) {
                 temp[i] = "  " + answerList[i];
-            }else if (i < nbrOfQuestions * 2 && i >= nbrOfQuestions){
+            }else if (i < nbrOfQuestions * 2){
                 temp[i] = "  " + questionList.getQuestion(i - nbrOfQuestions).getQuestionsAndAnswer() + " : " + answerList[i - nbrOfQuestions];
             }else {
                 temp[i] = "  " + questionList.getQuestion(i - (2 * nbrOfQuestions)).getCorrectAnswer();

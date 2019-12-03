@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnKeyListener;
@@ -16,8 +15,8 @@ public class Game2Activity extends AppCompatActivity {
     TextView questionText;
     Game game;
     EditText answerTextEdit;
-    Button previousBtn;
-    Button nextBtn;
+    //  Button previousBtn;
+    //  Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +24,8 @@ public class Game2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_game1);
         questionText = (TextView) findViewById(R.id.questionText);
         answerTextEdit = (EditText) findViewById(R.id.answerTextEdit);
-        previousBtn = (Button) findViewById(R.id.preBtn);
-        nextBtn = (Button) findViewById(R.id.nextBtn);
+     //   previousBtn = (Button) findViewById(R.id.preBtn);
+     //   nextBtn = (Button) findViewById(R.id.nextBtn);
         //previousBtn.setVisibility(View.VISIBLE);
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
@@ -36,12 +35,17 @@ public class Game2Activity extends AppCompatActivity {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
-                    if(game == null) {
+                    if (game == null) {
                         game = new Game(2, Integer.parseInt(answerTextEdit.getText().toString()));
-                    }else{
+                    } else {
                         game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
                     }
-                    onResume();
+                    if (game.getCurrentQuestionPosition() >= game.getNbrOfQuestions()) {
+                        openActivity1();
+                    } else {
+                        onResume();
+                    }
+
                     return true;
                 }
                 return false;
@@ -61,7 +65,7 @@ public class Game2Activity extends AppCompatActivity {
         super.onResume();
         if(game != null){
             answerTextEdit.setHint("Answer");
-            previousBtn.setHint("Previous");
+      //      previousBtn.setHint("Previous");
             answerTextEdit.getText().clear();
             questionText.setText(game.nextQuestion());
         }else{
@@ -81,8 +85,17 @@ public class Game2Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        openActivity1();
+    }
 
-
+    private void openActivity1(){
+        Intent intent = new Intent(Game2Activity.this, ResultActivity.class);
+        intent.putExtra("gameObj", game.getEverythingList());  // Ny
+        startActivity(intent);
+    }
 
 
 }
