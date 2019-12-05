@@ -24,7 +24,7 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
         setContentView(R.layout.activity_game1);
         game = new Game(1, 0);
         questionText = (TextView) findViewById(R.id.questionText);
-        answerTextEdit = (EditText) findViewById(R.id.answerTextEdit);
+        answerTextEdit = (EditText) findViewById(R.id.answerTextEdit1);
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -32,13 +32,23 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
                 // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
                     // Perform action on key press
-                    if(answerTextEdit.getText().toString() != "") {
+                    if(!answerTextEdit.getText().toString().matches("")) {
                         game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
+
                         if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
-                            openActivity1();
-                        }else{
+                            openResultActivity();
+                        } else {
                             onResume();
+                        }
+                    } else {
+                        if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
+                            openResultActivity();
+                        } else {
+                            game.setAnswer(game.getCurrentQuestionPosition() - 1, 0);
+                            onResume();
+
                         }
                     }
                     return true;
@@ -58,7 +68,6 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
     @Override
     protected void onResume(){
         super.onResume();
-        // Lägg in en if om fråga 20.
         answerTextEdit.getText().clear();
         questionText.setText(game.nextQuestion());
     }
@@ -72,12 +81,12 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
     @Override
     protected void onStop(){
         super.onStop();
-        openActivity1();
+        openResultActivity();
     }
 
 
 
-    private void openActivity1(){
+    private void openResultActivity(){
         Intent intent = new Intent(Game1Activity.this, ResultActivity.class);
         intent.putExtra("gameObj", game.getEverythingList());  // Ny
         startActivity(intent);

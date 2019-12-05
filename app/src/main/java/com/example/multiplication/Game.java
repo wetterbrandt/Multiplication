@@ -1,3 +1,4 @@
+
 package com.example.multiplication;
 
 import java.util.Random;
@@ -6,7 +7,7 @@ public class Game {
     private QuestionList questionList;
     private static int[] answerList;
     private int questionNbr = 0;
-    private final int nbrOfQuestions = 20;
+    private final int nbrOfQuestions = 5;
 
     Game(int mode, int specificNbr){
         Random rand = new Random();
@@ -31,7 +32,7 @@ public class Game {
     /*
     Returns a new question if there are new questions.
      */
-    public String nextQuestion(){
+    String nextQuestion(){
         if(questionNbr < nbrOfQuestions){
             return questionList.getQuestion(questionNbr++).getQuestion();
         }
@@ -84,3 +85,5 @@ public class Game {
 
 
 }
+
+

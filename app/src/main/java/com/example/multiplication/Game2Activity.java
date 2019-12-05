@@ -1,32 +1,30 @@
 package com.example.multiplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.View.OnKeyListener;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class Game2Activity extends AppCompatActivity {
     TextView questionText;
     Game game;
     EditText answerTextEdit;
-    //  Button previousBtn;
-    //  Button nextBtn;
+    TextView chooseTableText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game1);
+        setContentView(R.layout.activity_game2);
         questionText = (TextView) findViewById(R.id.questionText);
-        answerTextEdit = (EditText) findViewById(R.id.answerTextEdit);
-     //   previousBtn = (Button) findViewById(R.id.preBtn);
-     //   nextBtn = (Button) findViewById(R.id.nextBtn);
-        //previousBtn.setVisibility(View.VISIBLE);
+        answerTextEdit = (EditText) findViewById(R.id.answerTextEdit2);
+        chooseTableText = (TextView) findViewById(R.id.chooseTable);
+
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -37,14 +35,31 @@ public class Game2Activity extends AppCompatActivity {
                     // Perform action on key press
                     if (game == null) {
                         game = new Game(2, Integer.parseInt(answerTextEdit.getText().toString()));
-                    } else {
-                        game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
-                    }
-                    if (game.getCurrentQuestionPosition() >= game.getNbrOfQuestions()) {
-                        openActivity1();
-                    } else {
                         onResume();
-                    }
+
+                    } else {
+
+                            if(!answerTextEdit.getText().toString().matches("")) {
+                                game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
+
+                                if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
+                                    openResultActivity();
+                                } else {
+                                    onResume();
+                                }
+                            } else {
+
+                                if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
+                                    openResultActivity();
+                                } else {
+                                    game.setAnswer(game.getCurrentQuestionPosition() - 1, 0);
+                                    onResume();
+
+                                }
+                            }
+                        }
+
+
 
                     return true;
                 }
@@ -64,19 +79,16 @@ public class Game2Activity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         if(game != null){
-            answerTextEdit.setHint("Answer");
-      //      previousBtn.setHint("Previous");
+            chooseTableText.setVisibility(View.INVISIBLE);
+          //  answerTextEdit.setHint("Answer");
             answerTextEdit.getText().clear();
             questionText.setText(game.nextQuestion());
-        }else{
-            questionText.setText("Välj multiplikationstabell");
-            answerTextEdit.setHint("Specify number");
+        } else {
+            chooseTableText.setVisibility(View.VISIBLE);
+            chooseTableText.setText(R.string.v_lj_multiplikationstabell);
+          //  answerTextEdit.setHint("Specify number");
         }
 
-       /* if(game.getCurrentQuestionPosition() == 19){
-            Intent intent = new Intent(this, ResultActivity.class);
-            startActivity(intent);
-        } */
     }
 
     @Override
@@ -88,10 +100,10 @@ public class Game2Activity extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
-        openActivity1();
+        openResultActivity();
     }
 
-    private void openActivity1(){
+    private void openResultActivity(){
         Intent intent = new Intent(Game2Activity.this, ResultActivity.class);
         intent.putExtra("gameObj", game.getEverythingList());  // Ny
         startActivity(intent);

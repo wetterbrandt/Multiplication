@@ -11,4 +11,7 @@
     <string name="previous">Previous</string>
     <string name="_5_5_r_tt">5/5 rätt!</string>
     <string name="new_game">New Game</string>
+    <string name="ange_valfri_tabell">Ange valfri tabell</string>
+    <string name="choose_table">TextView</string>
+    <string name="v_lj_multiplikationstabell">Välj Multiplikationstabell</string>
 </resources>

@@ -8,19 +8,22 @@
 
     <TextView
         android:id="@+id/questionText"
-        android:layout_width="208dp"
+        android:layout_width="393dp"
         android:layout_height="163dp"
         android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/answerTextEdit"
+        android:id="@+id/answerTextEdit1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:gravity="center"
         android:ems="10"
         android:hint="@string/answer"
         android:inputType="number"
