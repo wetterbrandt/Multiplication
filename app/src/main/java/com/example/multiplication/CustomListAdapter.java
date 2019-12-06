@@ -8,6 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * Creates a custom adapter so that the results of a session can be displayed as a list.
+ *
+ * @author Gustav and Markus
+ */
 public class CustomListAdapter extends ArrayAdapter {
 
     private final Activity context;
@@ -24,11 +29,11 @@ public class CustomListAdapter extends ArrayAdapter {
         this.answers = answers;
     }
 
-    public View getView(int position, View view, ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.resultview_row, null, true);
+        View rowView = inflater.inflate(R.layout.resultview_row, parent, false);
 
-        TextView resultTextField = (TextView) rowView.findViewById(R.id.resultView);
+        TextView resultTextField = rowView.findViewById(R.id.resultView);
 
         resultTextField.setText(resultArray[position]);
 

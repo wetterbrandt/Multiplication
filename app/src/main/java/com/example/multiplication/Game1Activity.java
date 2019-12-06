@@ -12,19 +12,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 
-
+/**
+ * Activity for practising multiplication of two randomly generated numbers between 1 and 10.
+ *
+ * @author Gustav and Markus
+ */
 public class Game1Activity extends AppCompatActivity implements Serializable{
     TextView questionText;
     Game game;
     EditText answerTextEdit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game1);
         game = new Game(1, 0);
-        questionText = (TextView) findViewById(R.id.questionText);
-        answerTextEdit = (EditText) findViewById(R.id.answerTextEdit1);
+        questionText = findViewById(R.id.questionText);
+        answerTextEdit = findViewById(R.id.answerTextEdit1);
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -83,7 +88,6 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
         super.onStop();
         openResultActivity();
     }
-
 
 
     private void openResultActivity(){

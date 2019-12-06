@@ -7,26 +7,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+/**
+ * Activity for choosing practice mode.
+ * <p>
+ *  This activity lets you choose what mode you want to use the multiplication trainer in.
+ *
+ * @author Gustav & Markus
+ */
 public class MainActivity extends AppCompatActivity {
-    private Button game1;
-    private Button game2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        game1 = (Button) findViewById(R.id.modeOneButton);
-        game2 = (Button) findViewById(R.id.modeTwoButton);
+        Button mode1 = findViewById(R.id.modeOneButton);
+        Button mode2 = findViewById(R.id.modeTwoButton);
 
-        game1.setOnClickListener(new View.OnClickListener() {
+        mode1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivity1();
             }
         });
 
-        game2.setOnClickListener(new View.OnClickListener() {
+        mode2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openActivity2();

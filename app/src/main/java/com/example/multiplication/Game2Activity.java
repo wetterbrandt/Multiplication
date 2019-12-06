@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+/**
+ * Activity for practising multiplication of one specific table of the users choosing.
+ *
+ * @author Gustav and Markus
+ */
 public class Game2Activity extends AppCompatActivity {
     TextView questionText;
     Game game;
@@ -21,9 +25,9 @@ public class Game2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game2);
-        questionText = (TextView) findViewById(R.id.questionText);
-        answerTextEdit = (EditText) findViewById(R.id.answerTextEdit2);
-        chooseTableText = (TextView) findViewById(R.id.chooseTable);
+        questionText = findViewById(R.id.questionText);
+        answerTextEdit = findViewById(R.id.answerTextEdit2);
+        chooseTableText = findViewById(R.id.chooseTable);
 
         answerTextEdit.setOnKeyListener(new OnKeyListener() {
 
@@ -80,13 +84,13 @@ public class Game2Activity extends AppCompatActivity {
         super.onResume();
         if(game != null){
             chooseTableText.setVisibility(View.INVISIBLE);
-          //  answerTextEdit.setHint("Answer");
+
             answerTextEdit.getText().clear();
             questionText.setText(game.nextQuestion());
         } else {
             chooseTableText.setVisibility(View.VISIBLE);
             chooseTableText.setText(R.string.v_lj_multiplikationstabell);
-          //  answerTextEdit.setHint("Specify number");
+
         }
 
     }

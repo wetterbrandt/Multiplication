@@ -8,7 +8,11 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+/**
+ * This activity displays the result of the previous game activity.
+ *
+ * @author Gustav and Markus
+ */
 public class ResultActivity extends AppCompatActivity {
     ListView resultView;
     Button newGame;
@@ -42,6 +46,7 @@ public class ResultActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /*TODO: Markus should comment this too ;) */
     private void generateLists(String[] info){
         int length = info.length / 3;
         answers = new String[length];
