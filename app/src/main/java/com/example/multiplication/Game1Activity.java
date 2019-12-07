@@ -49,7 +49,7 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
                         }
                     } else {
                         if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
-                            openResultActivity();
+                            onStop();
                         } else {
                             game.setAnswer(game.getCurrentQuestionPosition() - 1, 0);
                             onResume();
@@ -74,6 +74,7 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
     protected void onResume(){
         super.onResume();
         answerTextEdit.getText().clear();
+        answerTextEdit.setHint("Svar");
         questionText.setText(game.nextQuestion());
     }
 

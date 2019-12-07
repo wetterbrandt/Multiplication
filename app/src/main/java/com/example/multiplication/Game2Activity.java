@@ -54,7 +54,7 @@ public class Game2Activity extends AppCompatActivity {
                             } else {
 
                                 if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
-                                    openResultActivity();
+                                    onStop();
                                 } else {
                                     game.setAnswer(game.getCurrentQuestionPosition() - 1, 0);
                                     onResume();
@@ -86,6 +86,7 @@ public class Game2Activity extends AppCompatActivity {
             chooseTableText.setVisibility(View.INVISIBLE);
 
             answerTextEdit.getText().clear();
+            answerTextEdit.setHint("Svar");
             questionText.setText(game.nextQuestion());
         } else {
             chooseTableText.setVisibility(View.VISIBLE);
