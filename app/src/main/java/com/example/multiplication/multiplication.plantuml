@@ -16,7 +16,7 @@ title __MULTIPLICATION's Class Diagram__\n
 
   namespace com.example.multiplication {
     class com.example.multiplication.Game {
-        {static} - answerList : int[]
+        {static} - answerList : String[]
         - nbrOfQuestions : int
         - questionNbr : int
         ~ Game()
@@ -25,7 +25,9 @@ title __MULTIPLICATION's Class Diagram__\n
         ~ getNbrOfQuestions()
         ~ nextQuestion()
         ~ setAnswer()
+        - getCorrectAnswerList()
         - getNbrOfCorrectlyAnsweredQuestions()
+        - getQuestionStringList()
     }
   }
   
@@ -39,6 +41,7 @@ title __MULTIPLICATION's Class Diagram__\n
         # onResume()
         # onStart()
         # onStop()
+        - getNextQuestion()
         - openResultActivity()
     }
   }
@@ -54,6 +57,7 @@ title __MULTIPLICATION's Class Diagram__\n
         # onResume()
         # onStart()
         # onStop()
+        - getNextQuestion()
         - openResultActivity()
     }
   }
@@ -74,6 +78,7 @@ title __MULTIPLICATION's Class Diagram__\n
         - nbr1 : int
         - nbr2 : int
         + Question()
+        + equals()
         ~ correctAnswer()
         ~ getCorrectAnswer()
         ~ getQuestion()
@@ -88,6 +93,7 @@ title __MULTIPLICATION's Class Diagram__\n
         - nbrOfQuestions : int
         + QuestionList()
         ~ getQuestion()
+        - checkListForDuplicateQuestions()
         - generateListWithQuestions()
     }
   }
