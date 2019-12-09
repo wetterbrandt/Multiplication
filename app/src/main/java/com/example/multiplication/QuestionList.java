@@ -28,8 +28,16 @@ public class QuestionList {
         for(int i = 0; i < nbrOfQuestions; i++){
             list[i] = new Question(rand, mode, nbr);
         }
+        checkListForDuplicateQuestions(list, rand, mode, nbr);
     }
 
+    private void checkListForDuplicateQuestions(Question[] list, Random rand, int mode, int nbr){
+        for(int i = 1; i < nbrOfQuestions; i++){
+            if (list[i].equals(list[i - 1])){
+                list[i] = new Question(rand, mode, nbr);
+            }
+        }
+    }
 
     Question getQuestion(int pos){
         if(pos >= nbrOfQuestions || pos < 0){

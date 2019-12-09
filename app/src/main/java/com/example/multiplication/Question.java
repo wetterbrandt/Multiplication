@@ -47,7 +47,7 @@ public class Question {
 
     /**
      * Returns a boolean value.
-     *     True if answer is correct answer
+     *     True if answer is correct
      *     Otherwise false.
      * @param answer The answer provided by the user
      * @return <code>true</code> if the answer is correct;
@@ -72,6 +72,22 @@ public class Question {
         return (nbr1 + " * " + nbr2 + " = " + product);
     }
 
+    @Override
+    public boolean equals(Object obj){
+
+        if(obj == this){
+            return true;
+        }
+
+        if(!(obj instanceof Question)){
+            return false;
+        }
+
+        Question q = (Question) obj;
+
+        return (nbr1 == q.nbr1) && (nbr2 == q.nbr2);
+
+    }
 }
 
 

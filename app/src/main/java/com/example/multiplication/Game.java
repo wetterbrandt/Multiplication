@@ -11,7 +11,7 @@ public class Game {
     private QuestionList questionList;
     private static int[] answerList;
     private int questionNbr = 0;
-    private final int nbrOfQuestions = 5;
+    private final int nbrOfQuestions = 20;
 
     /**
      * Constructor method for the class Game.
