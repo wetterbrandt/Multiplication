@@ -48,7 +48,7 @@ public class Game2Activity extends AppCompatActivity {
                     } else {
 
                         if(!answerTextEdit.getText().toString().matches("")) {
-                            game.setAnswer(game.getCurrentQuestionPosition() - 1, Integer.parseInt(answerTextEdit.getText().toString()));
+                            game.setAnswer(game.getCurrentQuestionPosition() - 1, answerTextEdit.getText().toString());
 
                             if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
                                 openResultActivity();
@@ -60,7 +60,7 @@ public class Game2Activity extends AppCompatActivity {
                             if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
                                 openResultActivity();
                             } else {
-                                game.setAnswer(game.getCurrentQuestionPosition() - 1, 0);
+                                game.setAnswer(game.getCurrentQuestionPosition() - 1, "0");
                                 getNextQuestion();
 
                             }

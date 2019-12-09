@@ -8,6 +8,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
+
 /**
  * This activity displays the result of the previous game activity.
  *
@@ -52,31 +54,12 @@ public class ResultActivity extends AppCompatActivity {
         answers = new String[length];
         correctAnswers = new String[length];
         results = new String[length + 1];
-        int counter = 0;
-        int counter2 = 0;
-        int counter3 = 0;
-        while(counter < info.length - 1){
-            if(counter < length){
-                answers[counter] = info[counter];
-            }else if(counter < length * 2){
-                results[counter2] = info[counter];
-                counter2++;
-            }else{
-                correctAnswers[counter3] = info[counter];
-                counter3++;
-            }
-            counter++;
+        results = Arrays.copyOfRange(info, 0, length + 1); // 0 - 5
+        answers = Arrays.copyOfRange(info, length + 1, (length * 2) + 1); // 6 - 10
+        correctAnswers = Arrays.copyOfRange(info, (length * 2) + 1, (length * 3) + 1); // 11 - 15
+        for(int i = 0; i < results.length; i++){
+            System.out.println(results[i]);
         }
-        results[length] = info[counter];
-        String[] temp = new String[length + 1];
-        for(int i = 0; i < temp.length; i++){
-            if(i == 0){
-                temp[0] = results[length];
-            }else{
-                temp[i] = results[i - 1];
-            }
-        }
-        results = temp;
-
     }
+
 }
