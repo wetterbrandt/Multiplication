@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,7 +29,14 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
         game = new Game(1, 0);
         questionText = findViewById(R.id.questionText);
         answerTextEdit = findViewById(R.id.answerTextEdit1);
-        answerTextEdit.setOnKeyListener(new OnKeyListener() {
+        questionText.setText(game.nextQuestion());
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        answerTextEdit.setOnKeyListener(new View.OnKeyListener() {
 
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
@@ -45,14 +51,14 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
                         if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
                             openResultActivity();
                         } else {
-                            onResume();
+                            getNextQuestion();
                         }
                     } else {
                         if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
-                            onStop();
+                            openResultActivity();
                         } else {
                             game.setAnswer(game.getCurrentQuestionPosition() - 1, 0);
-                            onResume();
+                            getNextQuestion();
 
                         }
                     }
@@ -61,21 +67,12 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
                 return false;
             }
         });
-
-
-    }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        answerTextEdit.getText().clear();
-        answerTextEdit.setHint("Svar");
-        questionText.setText(game.nextQuestion());
+
     }
 
     @Override
@@ -87,7 +84,6 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
     @Override
     protected void onStop(){
         super.onStop();
-        openResultActivity();
     }
 
 
@@ -95,6 +91,11 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
         Intent intent = new Intent(Game1Activity.this, ResultActivity.class);
         intent.putExtra("gameObj", game.getEverythingList());  // Ny
         startActivity(intent);
+    }
+
+    private void getNextQuestion(){
+        answerTextEdit.getText().clear();
+        questionText.setText(game.nextQuestion());
     }
 
 
