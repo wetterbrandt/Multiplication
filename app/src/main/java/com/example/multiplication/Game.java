@@ -3,6 +3,7 @@ package com.example.multiplication;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 
@@ -76,7 +77,7 @@ public class Game {
 
     /* TODO: Markus should comment this ;) */
     String[] getEverythingList() {
-        ArrayList<String> array = new ArrayList<String>();
+        List<String> array = new ArrayList<>();
         array.add("  " + getNbrOfCorrectlyAnsweredQuestions() + "/" + nbrOfQuestions + " correct");
         array.addAll(1, Arrays.asList(getQuestionStringList()));
         array.addAll(1 + nbrOfQuestions, Arrays.asList(answerList));

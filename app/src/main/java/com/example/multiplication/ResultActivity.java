@@ -33,7 +33,7 @@ public class ResultActivity extends AppCompatActivity {
         CustomListAdapter adapter = new CustomListAdapter(this, results, correctAnswers, answers);
         resultView = findViewById(R.id.resultView);
         resultView.setAdapter(adapter);
-        newGame = (Button) findViewById(R.id.newGameButton);
+        newGame = findViewById(R.id.newGameButton);
         newGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,9 +57,6 @@ public class ResultActivity extends AppCompatActivity {
         results = Arrays.copyOfRange(info, 0, length + 1); // 0 - 5
         answers = Arrays.copyOfRange(info, length + 1, (length * 2) + 1); // 6 - 10
         correctAnswers = Arrays.copyOfRange(info, (length * 2) + 1, (length * 3) + 1); // 11 - 15
-        for(int i = 0; i < results.length; i++){
-            System.out.println(results[i]);
-        }
     }
 
 }
