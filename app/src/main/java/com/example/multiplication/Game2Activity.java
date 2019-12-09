@@ -56,11 +56,10 @@ public class Game2Activity extends AppCompatActivity {
                                 getNextQuestion();
                             }
                         } else {
-
+                            game.setAnswer(game.getCurrentQuestionPosition() - 1, "0");
                             if (game.getCurrentQuestionPosition()  >= game.getNbrOfQuestions()) {
                                 openResultActivity();
                             } else {
-                                game.setAnswer(game.getCurrentQuestionPosition() - 1, "0");
                                 getNextQuestion();
 
                             }
