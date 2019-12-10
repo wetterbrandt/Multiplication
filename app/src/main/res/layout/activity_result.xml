@@ -10,7 +10,7 @@
         android:id="@+id/newGameButton"
         android:layout_width="122dp"
         android:layout_height="71dp"
-        android:text="@string/new_game"
+        android:text="@string/spela_igen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

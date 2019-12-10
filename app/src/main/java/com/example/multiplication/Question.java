@@ -29,8 +29,8 @@ public class Question {
                     nbr1 = 1 + rand.nextInt(nbr);
                     nbr2 = 1 + rand.nextInt(nbr);
                 }else {
-                    nbr1 = nbr;
-                    nbr2 = 1 + rand.nextInt(10);
+                    nbr1 = 1 + rand.nextInt(10);
+                    nbr2 = nbr;
                 }
             }
         } else {

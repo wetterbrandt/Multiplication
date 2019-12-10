@@ -15,4 +15,7 @@
     <string name="choose_table">TextView</string>
     <string name="v_lj_multiplikationstabell">Välj Multiplikationstabell</string>
     <string name="svar">Svar</string>
+    <string name="spela_igen">Spela igen</string>
+    <string name="spell_ge_2">Spelläge 2</string>
+    <string name="spell_ge_1">Spelläge 1</string>
 </resources>

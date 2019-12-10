@@ -12,13 +12,14 @@
         android:layout_height="79dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="316dp"
-        android:text="@string/mode_1"
+        android:text="@string/spell_ge_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/modeTwoButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.223" />
+        app:layout_constraintVertical_bias="0.223"
+        android:layout_marginStart="50dp" />
 
     <Button
         android:id="@+id/modeTwoButton"
@@ -27,7 +28,7 @@
         android:layout_marginTop="316dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:text="@string/mode_2"
+        android:text="@string/spell_ge_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
