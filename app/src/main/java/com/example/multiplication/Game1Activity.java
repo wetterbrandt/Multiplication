@@ -86,13 +86,18 @@ public class Game1Activity extends AppCompatActivity implements Serializable{
         super.onStop();
     }
 
-
+    /**
+     * Code to display a result screen when all questions have been answered.
+     */
     private void openResultActivity(){
         Intent intent = new Intent(Game1Activity.this, ResultActivity.class);
         intent.putExtra("gameObj", game.getEverythingList());  // Ny
         startActivity(intent);
     }
 
+    /**
+     * Generates the next question and displays it on the screen.
+     */
     private void getNextQuestion(){
         answerTextEdit.getText().clear();
         questionText.setText(game.nextQuestion());

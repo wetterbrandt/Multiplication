@@ -91,13 +91,18 @@ public class Game2Activity extends AppCompatActivity {
         super.onStop();
     }
 
-
+    /**
+     * Code to display a result screen when all questions have been answered.
+     */
     private void openResultActivity(){
         Intent intent = new Intent(Game2Activity.this, ResultActivity.class);
         intent.putExtra("gameObj", game.getEverythingList());  // Ny
         startActivity(intent);
     }
 
+    /**
+     * Generates the next question and displays it on the screen.
+     */
     private void getNextQuestion(){
         if(game != null){
             chooseTableText.setVisibility(View.INVISIBLE);

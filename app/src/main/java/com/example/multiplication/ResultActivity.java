@@ -43,12 +43,20 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method to jump to start screen.
+     */
     private void openMainActivity(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    /*TODO: Markus should comment this too ;) */
+
+    /**
+     *This method takes the String[] from getEverythingList() and divides it to more manageable components.
+     * These components are used to display the results in resultActivity.
+     * @param info input from getEverythingList().
+     */
     private void generateLists(String[] info){
         int length = info.length / 3;
         answers = new String[length];

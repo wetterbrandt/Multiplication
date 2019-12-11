@@ -14,7 +14,7 @@ public class Game {
     private QuestionList questionList;
     private static String[] answerList;
     private int questionNbr = 0;
-    private final int nbrOfQuestions = 5;
+    private final int nbrOfQuestions = 20;
 
     /**
      * Constructor method for the class Game.
@@ -75,7 +75,12 @@ public class Game {
     }
 
 
-    /* TODO: Markus should comment this ;) */
+    /**
+     * Method to generate a list containing a single element detailing the number of correctly answered questions,
+     * user answers, correct answers and some elements containing a specific String
+     * sequence e.g (7 * 8 = 48 : 56)
+     * @return a String[]
+     */
     String[] getEverythingList() {
         List<String> array = new ArrayList<>();
         array.add("  " + getNbrOfCorrectlyAnsweredQuestions() + "/" + nbrOfQuestions + " correct");
@@ -85,6 +90,10 @@ public class Game {
         return array.toArray(new String[(nbrOfQuestions * 3) + 1]);
     }
 
+    /**
+     * Private method used by getEverythingList()
+     * @return a String[]
+     */
     private String[] getQuestionStringList() {
         String[] temp = new String[nbrOfQuestions];
         for (int i = 0; i < nbrOfQuestions; i++) {
@@ -93,6 +102,10 @@ public class Game {
         return temp;
     }
 
+    /**
+     * Private method used by getEverythingList()
+     * @return a String[]
+     */
     private String[] getCorrectAnswerList() {
         String[] temp = new String[nbrOfQuestions];
         for (int i = 0; i < nbrOfQuestions; i++) {

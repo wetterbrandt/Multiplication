@@ -40,13 +40,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-        private void openActivity1(){
+
+    /**
+     * Method to open game mode 1.
+     */
+    private void openActivity1(){
             Intent intent = new Intent(this, Game1Activity.class);
             startActivity(intent);
         }
 
-
-        private void openActivity2(){
+    /**
+     * Method to open game mode 2.
+     */
+    private void openActivity2(){
         Intent intent = new Intent(this, Game2Activity.class);
         startActivity(intent);
     }
